@@ -6,13 +6,8 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   USplash in 'USplash.pas' {SplashForm},
-  uInsa in 'uInsa.pas' {InsaForm},
-  uDM in 'uDM.pas' {DM: TDataModule},
-  uDept in 'uDept.pas' {DeptForm},
-  Utrans in 'Utrans.pas' {TransForm},
-  uTree in 'uTree.pas' {TreeForm},
-  uUpdateSql in 'uUpdateSql.pas' {UpdateForm},
-  UbatchMove in 'UbatchMove.pas' {BatchForm};
+  Uchart_Frame in 'Uchart_Frame.pas' {chartFrame: TFrame},
+  uListUp_DLL in 'uListUp_DLL.pas' {DllLoadForm};
 
 {$R *.res}
 
@@ -24,7 +19,6 @@ begin
   SplashFOrm.Show;
   SplaShForm.Refresh;
   Application.CreateForm(TMainForm, MainForm);
-  Application.CreateForm(TDM, DM);
   SplashForm.Hide;
   SplashForm.free;
   Application.Run;

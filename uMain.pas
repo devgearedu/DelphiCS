@@ -9,15 +9,14 @@ uses
   Vcl.ActnMan, Vcl.ActnCtrls, Vcl.StdActns, Vcl.ExtActns, Vcl.ActnList,
   System.Actions, Vcl.RibbonLunaStyleActnCtrls, System.ImageList, Vcl.ImgList,
   Vcl.RibbonSilverStyleActnCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Menus,
-  Vcl.JumpList, System.Win.TaskbarCore, Vcl.Taskbar,Vcl.Themes,
-  Vcl.Touch.GestureMgr,System.Win.ComObj,System.Win.ScktComp, Vcl.ButtonGroup,
-  Vcl.CategoryButtons;
+  Vcl.Touch.GestureMgr, System.Win.TaskbarCore, Vcl.Taskbar, Vcl.JumpList,
+  Vcl.CategoryButtons, Vcl.ButtonGroup, Vcl.Themes, System.Win.ComObj,System.Win.ScktComp;
 
 type
-
   TAboutProc =  procedure; stdcall;
   TcalcFunc<t> = function(x,y:t):t; stdcall;
 
+  { TTreeView }
 
   TMainForm = class(TForm)
     ImageList1: TImageList;
@@ -88,17 +87,8 @@ type
     ListView1: TListView;
     Action1: TAction;
     Action2: TAction;
-    RibbonPage3: TRibbonPage;
-    RibbonGroup8: TRibbonGroup;
-    RibbonGroup9: TRibbonGroup;
-    RibbonGroup10: TRibbonGroup;
-    RibbonGroup11: TRibbonGroup;
-    Dept_Action: TAction;
-    Insa_Action: TAction;
-    TreeView_Action: TAction;
-    Transaction_Action: TAction;
-    Update_Action: TAction;
-    Batch_Action: TAction;
+    Action3: TAction;
+    ImageList2: TImageList;
     procedure FormCreate(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure RibbonSpinEdit1Change(Sender: TObject);
@@ -122,12 +112,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Action1Execute(Sender: TObject);
     procedure Action2Execute(Sender: TObject);
-    procedure Insa_ActionExecute(Sender: TObject);
-    procedure Dept_ActionExecute(Sender: TObject);
-    procedure Transaction_ActionExecute(Sender: TObject);
-    procedure TreeView_ActionExecute(Sender: TObject);
-    procedure Update_ActionExecute(Sender: TObject);
-    procedure Batch_ActionExecute(Sender: TObject);
+    procedure Action3Execute(Sender: TObject);
   private
     function GetCurrPos(RichEdit:TRichEdit):integer;
     function GetCurrLine(RichEdit:TRichEdit):integer;
@@ -141,7 +126,7 @@ var
 
 implementation
 
-uses uInsa, uDept, Utrans, uTree, uUpdateSql, UbatchMove;
+uses uListUp_DLL;
 type
   Delphi_Curri = record
     Instructor:string;
@@ -149,6 +134,12 @@ type
     Cnt:integer;
   end;
   P_Delphi_Curri = ^Delphi_Curri;
+
+  TMyListItem = class(TListColumn)
+  public
+    MyData: String;
+  end;
+
 
 var
   t:TTreeNode;
@@ -213,21 +204,15 @@ begin
   end;
 end;
 
+procedure TMainForm.Action3Execute(Sender: TObject);
+begin
+  DllLoadForm := TDllLoadForm.create(Application);
+  DllLoadForm.Show;
+end;
+
 procedure TMainForm.Auric_ActionExecute(Sender: TObject);
 begin
   TStyleManager.TrySetStyle('Auric');
-end;
-
-procedure TMainForm.Batch_ActionExecute(Sender: TObject);
-begin
-  BatchForm := TBatchForm.create(Application);
-  BatchForm.Show;
-end;
-
-procedure TMainForm.Dept_ActionExecute(Sender: TObject);
-begin
-  DeptForm := TDeptForm.Create(Application);
-  DeptForm.Show;
 end;
 
 procedure TMainForm.ExceptionHandler(sender: TObject; e: exception);
@@ -320,19 +305,37 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+type
+  PListColumnClass = ^TCollectionItemClass;
+var
+  ItemClass: PListColumnClass;
+  ListColumn: TListColumn;
 begin
-   RibbonSpinEdit1.Value := RichEdit1.Font.Size;
-   Application.OnHint := ShowHint;
-   Application.OnException := ExceptionHandler;
-     t := ttreeNode.Create(TreeView1.Items);
-   TreeView1.Selected := TreeView1.Items.Add(t,'교육부');
-   TreeView1.Items.AddChild(treeview1.Selected, '자바');
-   new(p);
-   p^.Instructor := '김원경';
-   p^.Version := '리우 10.3.1';
-   p^.Cnt := 6;
+  ItemClass := @ListView1.Columns.ItemClass;
+  ItemClass^ := TMyListItem;
 
-   TreeView1.Items.AddChildObject(TreeView1.Selected,'델파이', p);
+  RibbonSpinEdit1.Value := RichEdit1.Font.Size;
+  Application.OnHint := ShowHint;
+  Application.OnException := ExceptionHandler;
+  //treeNode 동적으로 생성하는 방법
+  t := ttreeNode.Create(TreeView1.Items);
+  TreeView1.Selected := TreeView1.Items.Add(t,'교육부');
+  TreeView1.Items.AddChild(treeview1.Selected, '자바');
+  new(p);
+  p^.Instructor := '김원경';
+  p^.Version := '리우 10.3.1';
+  p^.Cnt := 6;
+
+  TreeView1.Items.AddChildObject(TreeView1.Selected,'델파이', p);
+  TreeView1.FullExpand;
+  //리스뷰의 컬럼 동적으로 추가하는 방법
+  ListColumn := ListView1.Columns.Add;
+  ListColumn.Caption := '기타정보';
+  ListColumn.Width := 200;
+  TMyListItem(ListColumn).MyData := '데스트데이터';
+
+  // Caption := ListColumn.ClassName; :TmyListItem
+  ListView1.Items[0].SubItems.Add(TMyListItem(ListView1.Columns[3]).MyData );
 end;
 
 function TMainForm.GetCurrLine(RichEdit: TRichEdit): integer;
@@ -344,12 +347,6 @@ function TMainForm.GetCurrPos(RichEdit: TRichEdit): integer;
 begin
   result := RichEdit.SelStart - RichEdit.Perform(EM_LINEINDEX,GetcurrLine(RichEdit),0);
 
-end;
-
-procedure TMainForm.Insa_ActionExecute(Sender: TObject);
-begin
-  InsaForm := TInsaForm.Create(Application);
-  InsaForm.Show;
 end;
 
 procedure TMainForm.New_ActionExecute(Sender: TObject);
@@ -408,12 +405,6 @@ begin
 end;
 
 
-procedure TMainForm.Transaction_ActionExecute(Sender: TObject);
-begin
-  TransForm := TTransForm.Create(Application);
-  TransForm.Show;
-end;
-
 procedure TMainForm.TreeView1Click(Sender: TObject);
 begin
   if TreeView1.Selected.Data <> nil then
@@ -425,22 +416,9 @@ begin
   end;
 end;
 
-procedure TMainForm.TreeView_ActionExecute(Sender: TObject);
-begin
-  TreeForm := TTreeForm.Create(Application);
-  TreeForm.Show;
-end;
-
-procedure TMainForm.Update_ActionExecute(Sender: TObject);
-begin
-  UpdateForm := TUpdateForm.Create(Application);
-  UpdateForm.Show;
-end;
 
 procedure TMainForm.Window_ActionExecute(Sender: TObject);
 begin
    TStyleManager.TrySetStyle('windows');
 end;
-
-{ TTreeView }
 end.

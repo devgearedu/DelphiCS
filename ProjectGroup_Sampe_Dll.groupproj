@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{93523DE3-9141-442C-8F3F-0EE23684B2DD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="sample.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PAboutBox.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FormLoad.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="sample">
+        <MSBuild Projects="sample.dproj"/>
+    </Target>
+    <Target Name="sample:Clean">
+        <MSBuild Projects="sample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="sample:Make">
+        <MSBuild Projects="sample.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PAboutBox">
+        <MSBuild Projects="PAboutBox.dproj"/>
+    </Target>
+    <Target Name="PAboutBox:Clean">
+        <MSBuild Projects="PAboutBox.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PAboutBox:Make">
+        <MSBuild Projects="PAboutBox.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FormLoad">
+        <MSBuild Projects="FormLoad.dproj"/>
+    </Target>
+    <Target Name="FormLoad:Clean">
+        <MSBuild Projects="FormLoad.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FormLoad:Make">
+        <MSBuild Projects="FormLoad.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="sample;PAboutBox;FormLoad"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="sample:Clean;PAboutBox:Clean;FormLoad:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="sample:Make;PAboutBox:Make;FormLoad:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
