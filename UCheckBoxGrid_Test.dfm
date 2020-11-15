@@ -88,7 +88,7 @@ object Form185: TForm185
   end
   object DataSource1: TDataSource
     DataSet = FDTable1
-    Left = 352
+    Left = 192
     Top = 16
   end
 end

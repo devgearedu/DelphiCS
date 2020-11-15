@@ -36,7 +36,6 @@ type
     InsaID: TIntegerField;
     FDGUIxErrorDialog1: TFDGUIxErrorDialog;
     InsaDuring: TIntegerField;
-    FDManager1: TFDManager;
     procedure insaCalcFields(DataSet: TDataSet);
     procedure insaBeforeInsert(DataSet: TDataSet);
     procedure insaNewRecord(DataSet: TDataSet);

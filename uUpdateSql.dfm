@@ -33,8 +33,8 @@ object UpdateForm: TUpdateForm
     OnClick = Button1Click
   end
   object CheckBox1: TCheckBox
-    Left = 16
-    Top = 280
+    Left = 8
+    Top = 281
     Width = 57
     Height = 25
     Caption = #52992#49772
@@ -46,7 +46,7 @@ object UpdateForm: TUpdateForm
     Top = 279
     Width = 420
     Height = 25
-    DataSource = DM.DeptSource
+    DataSource = dm.DeptSource
     VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh, nbApplyUpdates, nbCancelUpdates]
     TabOrder = 3
   end
@@ -83,7 +83,7 @@ object UpdateForm: TUpdateForm
     Width = 121
     Height = 21
     DataField = 'CODE'
-    DataSource = DM.DeptSource
+    DataSource = dm.DeptSource
     TabOrder = 7
   end
   object DBEdit2: TDBEdit
@@ -92,7 +92,7 @@ object UpdateForm: TUpdateForm
     Width = 121
     Height = 21
     DataField = 'DEPT'
-    DataSource = DM.DeptSource
+    DataSource = dm.DeptSource
     TabOrder = 8
   end
   object DBEdit3: TDBEdit
@@ -101,7 +101,7 @@ object UpdateForm: TUpdateForm
     Width = 121
     Height = 21
     DataField = 'SECTION'
-    DataSource = DM.DeptSource
+    DataSource = dm.DeptSource
     TabOrder = 9
   end
   object DBGrid1: TDBGrid
@@ -123,7 +123,7 @@ object UpdateForm: TUpdateForm
     Top = 312
     Width = 492
     Height = 106
-    DataSource = DM.DeptSource
+    DataSource = dm.DeptSource
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 11
     TitleFont.Charset = DEFAULT_CHARSET
@@ -153,7 +153,7 @@ object UpdateForm: TUpdateForm
   object FDQuery1: TFDQuery
     Active = True
     CachedUpdates = True
-    Connection = DM.FDConnection1
+    Connection = dm.FDConnection1
     UpdateObject = FDUpdateSQL1
     SQL.Strings = (
       'select * from dept, insa'

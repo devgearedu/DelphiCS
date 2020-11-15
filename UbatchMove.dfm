@@ -161,8 +161,14 @@ object BatchForm: TBatchForm
           64
           64
           64
-          64
+          124
           64)
+        ColAligments = (
+          0
+          1
+          1
+          0
+          0)
       end
       object DBGrid3: TDBGrid
         Left = 203
@@ -197,11 +203,17 @@ object BatchForm: TBatchForm
         RowCount = 19
         TabOrder = 0
         ColWidths = (
-          64
-          64
-          64
+          148
+          148
+          148
           64
           64)
+        ColAligments = (
+          0
+          0
+          0
+          1
+          1)
       end
       object Button7: TButton
         Left = 3
@@ -263,8 +275,8 @@ object BatchForm: TBatchForm
     Top = 80
   end
   object FDBatchMoveDataSetReader1: TFDBatchMoveDataSetReader
-    Left = 92
-    Top = 80
+    Left = 84
+    Top = 88
   end
   object FDBatchMoveTextWriter1: TFDBatchMoveTextWriter
     FileName = 'firedac_sample.txt'

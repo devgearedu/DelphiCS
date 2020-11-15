@@ -38,7 +38,7 @@ object DM: TDM
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'DEPT'
     TableName = 'DEPT'
-    Left = 56
+    Left = 40
     Top = 120
   end
   object DeptSource: TDataSource
@@ -68,10 +68,9 @@ object DM: TDM
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'INSA'
     TableName = 'INSA'
-    Left = 48
+    Left = 40
     Top = 184
     object InsaID: TIntegerField
-      AutoGenerateValue = arAutoInc
       FieldName = 'ID'
       Origin = 'ID'
       Required = True
@@ -172,13 +171,5 @@ object DM: TDM
     Provider = 'Forms'
     Left = 352
     Top = 32
-  end
-  object FDManager1: TFDManager
-    FormatOptions.AssignedValues = [fvMapRules]
-    FormatOptions.OwnMapRules = True
-    FormatOptions.MapRules = <>
-    Active = True
-    Left = 144
-    Top = 328
   end
 end

@@ -23,7 +23,7 @@ object DeptForm: TDeptForm
     Top = 8
     Width = 410
     Height = 49
-    DataSource = dm.DeptSource
+    DataSource = DM.DeptSource
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 0
   end
@@ -33,7 +33,7 @@ object DeptForm: TDeptForm
     Width = 456
     Height = 113
     Anchors = [akLeft, akTop, akRight]
-    DataSource = dm.DeptSource
+    DataSource = DM.DeptSource
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
@@ -47,7 +47,7 @@ object DeptForm: TDeptForm
     Top = 200
     Width = 462
     Height = 207
-    ActivePage = TabSheet4
+    ActivePage = TabSheet2
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 2
     object TabSheet1: TTabSheet
@@ -58,7 +58,7 @@ object DeptForm: TDeptForm
         Width = 454
         Height = 179
         Align = alClient
-        DataSource = dm.insaQuerySource
+        DataSource = DM.InsaQuerySource
         Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
@@ -90,21 +90,21 @@ object DeptForm: TDeptForm
       object Label1: TLabel
         Left = 64
         Top = 32
-        Width = 48
+        Width = 44
         Height = 13
         Caption = #48512#49436#53076#46300
       end
       object Label2: TLabel
         Left = 64
         Top = 64
-        Width = 36
+        Width = 33
         Height = 13
         Caption = #48512#49436#47749
       end
       object Label3: TLabel
         Left = 64
         Top = 104
-        Width = 24
+        Width = 22
         Height = 13
         Caption = #54016#47749
       end
@@ -169,7 +169,7 @@ object DeptForm: TDeptForm
     OnClick = Button2Click
   end
   object Tot_Query: TFDQuery
-    Connection = dm.FDConnection1
+    Connection = DM.FDConnection1
     SQL.Strings = (
       'select count(id) as total'
       'from insa'
@@ -183,7 +183,7 @@ object DeptForm: TDeptForm
       end>
   end
   object FDStoredProc1: TFDStoredProc
-    Connection = dm.FDConnection1
+    Connection = DM.FDConnection1
     StoredProcName = 'INSERT_DEPT'
     Left = 288
     Top = 128

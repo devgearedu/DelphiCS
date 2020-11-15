@@ -61,6 +61,7 @@ var
   Excel: OleVariant;
   WorkBook: OleVariant;
   WorkSheet: OleVariant;
+  mycolor: array [0..2] of tcolor = (clyellow, clsilver, claqua);
 
 procedure TDeptForm.Button1Click(Sender: TObject);
 begin
@@ -109,7 +110,7 @@ begin
        WorkSheet.Cells[i+1,2].value := StringGrid1.Cells[1,i];
        WorkSheet.Cells[i+1,3].value := StringGrid1.Cells[2,i];
      end;
-//     WorkBook.SaveAs('d:\ExcelOutputTest.xls');
+     WorkBook.SaveAs('d:\sample.xlsx');
 
   finally
     // ¿öÅ©ºÏ ´Ý±â
@@ -206,31 +207,36 @@ var
   pos:integer;
   OldAlign:integer;
 begin
-  s := StringGrid1.Cells[ACol,ARow];
+  s := StringGrid1.Cells[acol, arow];
   with StringGrid1.Canvas do
   begin
     FillRect(Rect);
-    if ARow = 0 then
-    begin
-      Font.Color := clBlue;
-      Font.Size := Font.Size + 4;
-    end;
-    if (ACol = 2) and (ARow <> 0) then
-    begin
-      if (ARow = StringGrid1.RowCount - 1) then
-         Brush.color := clyellow;
 
-      Font.Color := clred;
-      Font.Size := Font.Size + 4;
-      s := s + '¸í';
-      OldAlign := SetTextAlign(Handle,ta_Right);
-      TextRect(Rect, Rect.Right, Rect.Top+3, s);
-      SetTextAlign(Handle,OldAlign);
+    if Arow = 0 then
+    begin
+       Font.Color := clBlue;
+       Font.Size := Font.Size + 4;
+    end
+    else
+       Brush.Color :=  Mycolor[ Arow mod 3];
+
+    if (Acol = 2) and (Arow <> 0) then
+    begin
+//       if strtoint(s) = 0  then
+//       begin
+//       brush.Color := clsilver;
+//       end;
+       Font.Color := clRed;
+       Font.Size := Font.Size + 4;
+       s := s + '¸í';
+       OldAlign := SetTextAlign(handle, ta_right);
+       TextRect(Rect, Rect.right, rect.Top+3, s);
+       SetTextAlign(handle,oldalign);
     end
     else
     begin
-      pos := ((Rect.Right - Rect.Left) - TextWidth(s)) div 2;
-      TextRect(Rect, Rect.Left+pos, Rect.Top+3, s);
+      pos := ((rect.Right - rect.Left) - textwidth(s))  div 2;
+      TextRect(Rect, Rect.Left+pos, rect.Top+3, s);
     end;
   end;
 end;
