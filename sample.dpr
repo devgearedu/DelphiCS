@@ -12,7 +12,6 @@ uses
   UbatchMove in 'UbatchMove.pas' {BatchForm},
   Vcl.Themes,
   Vcl.Styles,
-  Udept_New in 'Udept_New.pas' {DeptForm_New},
   UmyFrame in 'UmyFrame.pas' {Frame1: TFrame},
   uInsa in 'uInsa.pas' {InsaForm};
 
