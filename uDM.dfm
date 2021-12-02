@@ -1,14 +1,14 @@
 object DM: TDM
-  OldCreateOrder = False
-  Height = 468
-  Width = 445
+  Height = 585
+  Width = 556
+  PixelsPerInch = 120
   object InsaQuery: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from insa'
       'where dept_code = :code')
-    Left = 176
-    Top = 120
+    Left = 220
+    Top = 150
     ParamData = <
       item
         Name = 'CODE'
@@ -19,17 +19,17 @@ object DM: TDM
   end
   object InsaQuerySource: TDataSource
     DataSet = InsaQuery
-    Left = 232
-    Top = 120
+    Left = 290
+    Top = 150
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Forms'
-    Left = 176
-    Top = 40
+    Left = 220
+    Top = 50
   end
   object FDPhysIBDriverLink1: TFDPhysIBDriverLink
-    Left = 96
-    Top = 40
+    Left = 130
+    Top = 50
   end
   object Dept: TFDTable
     Active = True
@@ -38,39 +38,38 @@ object DM: TDM
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'DEPT'
     TableName = 'DEPT'
-    Left = 40
-    Top = 120
+    Left = 50
+    Top = 150
   end
   object DeptSource: TDataSource
     DataSet = Dept
-    OnDataChange = DeptSourceDataChange
-    Left = 96
-    Top = 120
+    Left = 120
+    Top = 150
   end
   object InsaSource: TDataSource
     DataSet = Insa
-    Left = 96
-    Top = 184
+    Left = 120
+    Top = 230
   end
   object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink
     FileName = 'mytrace.txt'
     Tracing = True
-    Left = 352
-    Top = 112
+    Left = 440
+    Top = 140
   end
   object Insa: TFDTable
     Active = True
     BeforeInsert = InsaBeforeInsert
     OnCalcFields = InsaCalcFields
     OnNewRecord = InsaNewRecord
-    Filtered = True
     IndexFieldNames = 'ID'
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'INSA'
     TableName = 'INSA'
-    Left = 40
-    Top = 184
+    Left = 50
+    Top = 230
     object InsaID: TIntegerField
+      AutoGenerateValue = arAutoInc
       FieldName = 'ID'
       Origin = 'ID'
       Required = True
@@ -164,12 +163,12 @@ object DM: TDM
       'ConnectionDef=sample')
     Connected = True
     LoginPrompt = False
-    Left = 48
-    Top = 40
+    Left = 60
+    Top = 50
   end
   object FDGUIxErrorDialog1: TFDGUIxErrorDialog
     Provider = 'Forms'
-    Left = 352
-    Top = 32
+    Left = 440
+    Top = 40
   end
 end

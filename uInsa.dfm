@@ -11,15 +11,14 @@
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = False
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  PixelsPerInch = 96
   DesignSize = (
     611
     399)
-  PixelsPerInch = 96
   TextHeight = 13
   object SpeedButton1: TSpeedButton
     Left = 417
@@ -136,7 +135,7 @@
     Top = 56
     Width = 591
     Height = 335
-    ActivePage = TabSheet4
+    ActivePage = tabsheet3
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 0
     OnDragDrop = PageControl1DragDrop
@@ -453,6 +452,9 @@
           Top = 77
           Width = 452
           Height = 211
+          Title.Margins.Left = 12
+          Title.Text.Strings = (
+            #49324#50896#48324' '#44553#50668#54788#54889)
           ExplicitLeft = 21
           ExplicitTop = 77
           ExplicitWidth = 452
@@ -507,6 +509,7 @@
         inherited ComboBox1: TComboBox
           Left = 277
           Top = 325
+          Height = 21
           ExplicitLeft = 277
           ExplicitTop = 325
         end

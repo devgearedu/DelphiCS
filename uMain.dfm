@@ -42,8 +42,6 @@ object MainForm: TMainForm
         Page = RibbonPage3
       end>
     TabIndex = 2
-    ExplicitLeft = 1
-    ExplicitTop = 5
     DesignSize = (
       742
       143)
@@ -288,7 +286,7 @@ object MainForm: TMainForm
         object ListView1: TListView
           Left = 0
           Top = 0
-          Width = 158
+          Width = 159
           Height = 174
           Align = alClient
           Columns = <
@@ -318,7 +316,7 @@ object MainForm: TMainForm
         object TreeView1: TTreeView
           Left = 0
           Top = 0
-          Width = 158
+          Width = 159
           Height = 174
           Align = alClient
           Indent = 19
@@ -340,7 +338,7 @@ object MainForm: TMainForm
         object ButtonGroup1: TButtonGroup
           Left = 0
           Top = 0
-          Width = 158
+          Width = 159
           Height = 174
           Align = alClient
           ButtonOptions = [gboFullSize, gboShowCaptions]
@@ -373,7 +371,7 @@ object MainForm: TMainForm
         object CategoryButtons1: TCategoryButtons
           Left = 0
           Top = 0
-          Width = 158
+          Width = 159
           Height = 174
           Align = alClient
           ButtonFlow = cbfVertical

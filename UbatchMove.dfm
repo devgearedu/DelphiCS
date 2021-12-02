@@ -20,7 +20,7 @@ object BatchForm: TBatchForm
     Top = 0
     Width = 705
     Height = 328
-    ActivePage = TabSheet3
+    ActivePage = TabSheet4
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet

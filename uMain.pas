@@ -147,7 +147,7 @@ var
 
 implementation
 
-uses uInsa, uDept, Utrans, uTree, uUpdateSql, UbatchMove, Udept_New;
+uses uInsa, uDept, Utrans, uTree, uUpdateSql, UbatchMove;
 type
   Delphi_Curri = record
     Instructor:string;
@@ -344,6 +344,7 @@ var
   ItemClass: PListColumnClass;
   ListColumn: TListColumn;
   StyleName: string;
+  filename :string;
 begin
   for StyleName in TStyleManager.StyleNames do
    Combobox1.Items.Add(StyleName);
@@ -363,6 +364,18 @@ begin
    p^.Cnt := 6;
 
    TreeView1.Items.AddChildObject(TreeView1.Selected,'델파이', p);
+   FileName := FilePath + 'sample.exe';
+
+//Jump list 동적생성 경로는 수정해서 사용하십시오 !!!!
+//  CategoryIndex := JumpList1.AddCategory('MyCategory');
+//  JumpList1.AddItemToCategory(CategoryIndex,
+//  'MyItem',FileName, '','');
+
+//  jumpItem := JumpList1.TaskList.add as TJumpListItem;
+//  jumpItem.FriendlyName := '테스트프로그램(동적)';
+//  jumpItem.path := 'E:\온라인교육\기초다지기\Win32\Debug\test.exe';
+
+//  JumpList1.UpdateList;
 end;
 
 function TMainForm.GetCurrLine(RichEdit: TRichEdit): integer;

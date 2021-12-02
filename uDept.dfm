@@ -18,12 +18,19 @@ object DeptForm: TDeptForm
     415)
   PixelsPerInch = 96
   TextHeight = 13
+  object Label4: TLabel
+    Left = 136
+    Top = 208
+    Width = 31
+    Height = 13
+    Caption = 'Label4'
+  end
   object DBNavigator1: TDBNavigator
     Left = 8
     Top = 8
     Width = 410
     Height = 49
-    DataSource = DM.DeptSource
+    DataSource = dm.DeptSource
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 0
   end
@@ -33,7 +40,7 @@ object DeptForm: TDeptForm
     Width = 456
     Height = 113
     Anchors = [akLeft, akTop, akRight]
-    DataSource = DM.DeptSource
+    DataSource = dm.DeptSource
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
@@ -58,7 +65,6 @@ object DeptForm: TDeptForm
         Width = 454
         Height = 179
         Align = alClient
-        DataSource = DM.InsaQuerySource
         Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
@@ -82,6 +88,7 @@ object DeptForm: TDeptForm
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
         TabOrder = 0
         OnDrawCell = StringGrid1DrawCell
+        ExplicitTop = 3
       end
     end
     object TabSheet3: TTabSheet
@@ -169,7 +176,7 @@ object DeptForm: TDeptForm
     OnClick = Button2Click
   end
   object Tot_Query: TFDQuery
-    Connection = DM.FDConnection1
+    Connection = dm.FDConnection1
     SQL.Strings = (
       'select count(id) as total'
       'from insa'
@@ -183,7 +190,7 @@ object DeptForm: TDeptForm
       end>
   end
   object FDStoredProc1: TFDStoredProc
-    Connection = DM.FDConnection1
+    Connection = dm.FDConnection1
     StoredProcName = 'INSERT_DEPT'
     Left = 288
     Top = 128

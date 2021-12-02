@@ -32,6 +32,7 @@ type
     Button2: TButton;
     TabSheet4: TTabSheet;
     StringGrid2: TStringGrid;
+    Label4: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;

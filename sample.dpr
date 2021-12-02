@@ -26,6 +26,7 @@ begin
   SplaShForm.Refresh;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TInsaForm, InsaForm);
   SplashForm.Hide;
   SplashForm.free;
   Application.Run;

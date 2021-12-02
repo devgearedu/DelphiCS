@@ -23,7 +23,7 @@ object TransForm: TTransForm
     Width = 449
     Height = 154
     Anchors = [akLeft, akTop, akRight]
-    DataSource = DM.DeptSource
+    DataSource = dm.DeptSource
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
@@ -37,7 +37,7 @@ object TransForm: TTransForm
     Top = 9
     Width = 290
     Height = 25
-    DataSource = DM.DeptSource
+    DataSource = dm.DeptSource
     TabOrder = 1
   end
   object Button1: TButton
@@ -56,7 +56,7 @@ object TransForm: TTransForm
     Height = 154
     Margins.Top = 16
     Anchors = [akLeft, akTop, akRight, akBottom]
-    DataSource = DM.InsaSource
+    DataSource = dm.InsaSource
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
@@ -66,7 +66,7 @@ object TransForm: TTransForm
     TitleFont.Style = []
   end
   object FDQuery1: TFDQuery
-    Connection = DM.FDConnection1
+    Connection = dm.FDConnection1
     Left = 328
     Top = 72
   end
